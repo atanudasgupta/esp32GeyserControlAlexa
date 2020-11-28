@@ -1,7 +1,7 @@
             /*
- Version 1.1 - Sept 26 2020
+ Version 2.0- Nov 26 2020
 
- Atanu, with SSL, ankita's Geyser
+ Atanu, implemented with SSL, aws certificates and Blynk api key
 */ 
 
 #include <Arduino.h>
@@ -470,8 +470,7 @@ BLYNK_WRITE(V23) // Horizontal step
 
 BLYNK_CONNECTED() {
     
-  // Blynk.syncAll();
-   rtc.begin(); 
+    rtc.begin(); 
 
   }
 
@@ -551,7 +550,7 @@ void WifiCheck() { // when Wifi is disconnected , reconnect
    
   Blynk.begin(bAuth, MySSID, MyWifiPassword);
   
-  Blynk.notify("Ankita's Geyser Automation is reconnected to Wifi !");
+  Blynk.notify(" Geyser Automation is reconnected to Wifi !");
   
 }
 
