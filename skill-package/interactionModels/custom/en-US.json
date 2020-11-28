@@ -1,0 +1,305 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "geyser control",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "LOW"
+                }
+            },
+            "intents": [
+                {
+                    "name": "TimerStartIntent",
+                    "slots": [],
+                    "samples": [
+                        "start timer"
+                    ]
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": [
+                     "yes",
+                     "yep",
+                     "alright",
+                     "yes please",
+                     "absolutely",
+                     "why not",
+                     "thank you"   
+                    ]
+                },
+               
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": [
+                        "No",
+                        "Nay",
+                        "I don't think so",
+                        "Nope",
+                        "Please don't"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "changeDurationIntent",
+                    "slots": [
+                        {
+                            "name": "time",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "yes duration is {time} minutes"
+                            ],
+                            "multipleValues": {
+                                "enabled": false
+                            }
+                        }
+                    ],
+                    "samples": [
+                        "change duration to {time} minutes",
+                        "Switch my Geyser for {time} minutes",
+                        "Change Geyser duration to {time}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.MoreIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateSettingsIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NextIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.PageUpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.PageDownIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.PreviousIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ScrollRightIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ScrollDownIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ScrollLeftIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.ScrollUpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "switchOnGeyserIntent",
+                    "slots": [],
+                    "samples": [
+                        "please switch on Geyser",
+                        "Please turn on geyser",
+                        "turn on my hot water",
+                        "start geyser",
+                        "activate geyser"
+                    ]
+                },
+                {
+                    "name": "switchOffGeyserIntent",
+                    "slots": [],
+                    "samples": [
+                        "turn off the geyser",
+                        "Please switch off the Geyser",
+                        "turn off my hot water",
+                        "stop geyser"
+                        
+                    ]
+                },
+                {
+                    "name": "enquireGeyserIntent",
+                    "slots": [],
+                    "samples": [
+                        "current geyser status",
+                        "Provide me current Geyser state",
+                        "Is my Geyser On",
+                        "Hot water status",
+                        "how much time is remaining",
+                        "geyser status",
+                        "is my geyser on or off"
+                    ]
+                }
+            ]
+           
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "changeDurationIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "time",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1458243403421.342520884138"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "switchOffGeyserIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": []
+                },
+                {
+                    "name": "switchOnGeyserIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": []
+                },
+                {
+                    "name": "enquireGeyserIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.953208323807"
+                    },
+                    "slots": []
+                },
+                {
+                    "name": "TimerStartIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.597336952402"
+                    },
+                    "slots": []
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1458243403421.342520884138",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "is the duration {time} minutes"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.1274788404376.1459122395393",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "i heard {time} minutes "
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.1274788404376",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "i got {time} minutes"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.1104377748856",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "did you ask me to switch on the geyser ?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.953208323807",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "did you ask me to fetch details?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.410930146673",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Should I remind you"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "do i set timer now?"
+                    }
+                ]
+            },
+           
+            {
+                "id": "Confirm.Intent.275223684044",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "did you ask me to switch on the geyser ?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.597336952402",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "do i set timer now?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Should I remind you"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.88492952832.784307454560.436170541212",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "You can answer 'Yes' or 'No'"
+                    }
+                ]
+            }
+        ]
+    }
+}
